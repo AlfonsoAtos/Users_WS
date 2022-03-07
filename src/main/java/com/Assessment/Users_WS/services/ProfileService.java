@@ -20,9 +20,10 @@ public class ProfileService {
         try {
             ArrayList<Profile> profilesList = (ArrayList<Profile>) repository.findAll();
             response.setProfilesList(profilesList);
-            response.setCode(200);
-            response.setError(false);
-            response.setMessage("Working...");
+            ErrorFalseMessageSingleton s = ErrorFalseMessageSingleton.getInstance();
+            response.setCode(s.getCode());
+            response.setError(s.isError());
+            response.setMessage(s.getMessage());
             return response;
         } catch (Exception e) {
             response.setCode(400);
@@ -73,9 +74,10 @@ public class ProfileService {
             ArrayList<Profile> profilesList = repository.findByIdProfile(idProfile);
             if (profilesList.size() > 0) {
                 response.setProfile(profilesList.get(0));
-                response.setCode(200);
-                response.setError(false);
-                response.setMessage("Working...");
+                ErrorFalseMessageSingleton s = ErrorFalseMessageSingleton.getInstance();
+                response.setCode(s.getCode());
+                response.setError(s.isError());
+                response.setMessage(s.getMessage());
                 return response;
             }
             response.setCode(400);
@@ -102,9 +104,10 @@ public class ProfileService {
         Response response = new Response();
         try {
             repository.deleteById(idProfile);
-            response.setCode(200);
-            response.setError(false);
-            response.setMessage("The profile was deleted successfully");
+            ErrorFalseMessageSingleton s = ErrorFalseMessageSingleton.getInstance();
+            response.setCode(s.getCode());
+            response.setError(s.isError());
+            response.setMessage(s.getMessage());
             return response;
         } catch (Exception e) {
             response.setCode(400);

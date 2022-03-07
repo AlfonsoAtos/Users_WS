@@ -11,6 +11,7 @@ public class Response {
     private Profile profile;
     private ArrayList<User> usersList;
     private User user;
+    private ArrayList<Gender> gendersList;
 
     public Profile getProfile() {
         return profile;
@@ -53,5 +54,11 @@ public class Response {
     }
     public void setProfile(Profile profile) {
         this.profile = profile;
+    }
+    public void setGendersList(ArrayList<Gender> gendersList) {
+        this.gendersList = gendersList;
+    }
+    public ArrayList<Gender> getGendersList(){
+        return gendersList;
     }
 }

@@ -8,30 +8,26 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "profiles")
-public class Profile {
-
+@Table(name = "genders")
+public class Gender {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    private Integer idProfile;
+    private Integer idGender;
     @Column(unique = true, nullable = false)
-    private String profile;
+    private String gender;
 
-    public String getProfile() {
-        return profile;
+    public Integer getIdGender() {
+        return idGender;
     }
-
-    public Integer getIdProfile() {
-        return idProfile;
+    public void setIdGender(Integer idGender) {
+        this.idGender = idGender;
     }
-
-    public void setIdProfile(Integer idProfile) {
-        this.idProfile = idProfile;
+    public String getGender() {
+        return gender;
     }
-
-    public void setProfile(String profile) {
-        this.profile = profile;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
-
+    
 }

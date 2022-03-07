@@ -22,9 +22,10 @@ public class UserService {
         try {
             ArrayList<User> usersList = (ArrayList<User>) repository.findAll();
             response.setUsersList(usersList);
-            response.setCode(200);
-            response.setError(false);
-            response.setMessage("Working...");
+            ErrorFalseMessageSingleton s = ErrorFalseMessageSingleton.getInstance();
+            response.setCode(s.getCode());
+            response.setError(s.isError());
+            response.setMessage(s.getMessage());
             return response;
         } catch (Exception e) {
             response.setCode(400);
@@ -38,9 +39,10 @@ public class UserService {
         Response response = new Response();
         try {
             repository.deleteById(idUser);
-            response.setCode(200);
-            response.setError(false);
-            response.setMessage("The user was deleted successfully");
+            ErrorFalseMessageSingleton s = ErrorFalseMessageSingleton.getInstance();
+            response.setCode(s.getCode());
+            response.setError(s.isError());
+            response.setMessage(s.getMessage());
             return response;
         } catch (Exception e) {
             response.setCode(400);
@@ -75,9 +77,10 @@ public class UserService {
         }
         try {
             User auxUser = repository.save(user);
-            response.setCode(200);
-            response.setError(false);
-            response.setMessage("The user was saved/updated successfully");
+            ErrorFalseMessageSingleton s = ErrorFalseMessageSingleton.getInstance();
+            response.setCode(s.getCode());
+            response.setError(s.isError());
+            response.setMessage(s.getMessage());
             response.setUser(auxUser);
             return response;
         } catch (Exception ex) {
@@ -110,9 +113,10 @@ public class UserService {
             if (list.size() > 0) {
                 User auxUser = list.get(0);
                 if (user.getPassword().equals(auxUser.getPassword())) {
-                    response.setCode(200);
-                    response.setError(false);
-                    response.setMessage("The user was logged successfully");
+                    ErrorFalseMessageSingleton s = ErrorFalseMessageSingleton.getInstance();
+                    response.setCode(s.getCode());
+                    response.setError(s.isError());
+                    response.setMessage(s.getMessage());
                     response.setUser(auxUser);
                     return response;
                 }
